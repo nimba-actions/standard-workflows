@@ -16,7 +16,7 @@ jobs:
     name: "Feature Test -  Namespaced"
     runs-on: ubuntu-latest
     steps:
-      - uses: nimba-actions/feature-test-namespaced@v1
+      - uses: nimba-actions/feature-test-namespaced@main
         with:
           dev-hub-auth-url: '${{ secrets.dev-hub-auth-url }}'
           cumulusci-version: '${{ inputs.cumulusci-version }}'
