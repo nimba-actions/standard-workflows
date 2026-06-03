@@ -27,6 +27,9 @@ jobs:
   install-beta:
     name: "Install Beta Release (Unlocked Package)"
     runs-on: ubuntu-latest
+    env:
+      # Skip the sfdx My Domain DNS resolvability pre-check (intermittent DomainNotFoundError on CI).
+      SFDX_DISABLE_DNS_CHECK: "true"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3

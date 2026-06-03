@@ -27,6 +27,9 @@ jobs:
   feature-test:
     name: "Feature - Test Unpackaged"
     runs-on: ubuntu-latest
+    env:
+      # Skip the sfdx My Domain DNS resolvability pre-check (intermittent DomainNotFoundError on CI).
+      SFDX_DISABLE_DNS_CHECK: "true"
     if: ${{ !inputs.robot }}
     steps:
       - uses: nimba-actions/feature-test@main
@@ -40,6 +43,9 @@ jobs:
   feature-test-with-robot:
     name: "Feature - Test with Robots"
     runs-on: ubuntu-latest
+    env:
+      # Skip the sfdx My Domain DNS resolvability pre-check (intermittent DomainNotFoundError on CI).
+      SFDX_DISABLE_DNS_CHECK: "true"
     if: ${{ inputs.robot }}
     steps:
       - uses: nimba-actions/feature-test-robot@main
@@ -53,6 +59,9 @@ jobs:
   build-unlocked-test-package:
     name: "Feature - Build Test Package"
     runs-on: ubuntu-latest
+    env:
+      # Skip the sfdx My Domain DNS resolvability pre-check (intermittent DomainNotFoundError on CI).
+      SFDX_DISABLE_DNS_CHECK: "true"
     steps:
       - uses: nimba-actions/build-unlocked-test-package@main
         with:
@@ -65,6 +74,9 @@ jobs:
   feature-test-2gp:
     name: "Feature - Install Test Package"
     runs-on: ubuntu-latest
+    env:
+      # Skip the sfdx My Domain DNS resolvability pre-check (intermittent DomainNotFoundError on CI).
+      SFDX_DISABLE_DNS_CHECK: "true"
     needs: [build-unlocked-test-package]
     steps:
       - uses: nimba-actions/feature-test-2gp@main
